@@ -1,0 +1,23 @@
+# tomcat-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vpro-app
+  labels:
+    app: vpro-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: vpro-app
+  template:
+    metadata:
+      labels:
+        app: vpro-app
+    spec:
+      containers:
+      - name: vpro-app
+        image: fostoq/vprofileapp
+        ports:
+        - name: vpro-app-port
+          containerPort: 8080
